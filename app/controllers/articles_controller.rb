@@ -10,7 +10,6 @@ class ArticlesController < ApplicationController
   end
   
   def destroy
-    @article = Article.find(params[:id])
     @article.destroy 
     flash.notice = "article got destroyed"
     redirect_to articles_path
@@ -29,7 +28,6 @@ class ArticlesController < ApplicationController
   end
   
   def update
-    @article = Article.find(params[:id])
     if @article.update(article_params)
       flash.notice = "Article was updated"
       redirect_to article_path(@article)
@@ -39,11 +37,9 @@ class ArticlesController < ApplicationController
   end
   
   def show
-    @article = Article.find(params[:id])
   end
   
   def edit
-    @article = Article.find(params[:id])
   end
   
   private
