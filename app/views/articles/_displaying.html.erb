@@ -1,0 +1,20 @@
+<% # oluşmazsa gösterilcek hatalar %>
+
+<% if input.errors.any? %>
+	<div class="row"> 
+	<div class="col-xs-8 col-xs-offset-2"> 
+		<div class="panel panel-danger">
+			<div class= "panel-heading">
+				<h2 class="panel-title">
+					There are
+		<%= pluralize(input.errors.count, "error") %> 
+		found:
+		</h2> 
+	<div class="panel-body">
+ <ul>
+	<% input.errors.full_messages.each do |msg| %>
+<li> <%= msg %> </li>
+<% end %>
+</ul>
+</div>  </div> </div> </div> </div>
+<% end %>
