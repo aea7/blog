@@ -8,6 +8,10 @@
 			</div>
 			<div class="article-desc">
 				<%= truncate(article.description,length:100) %>
+				<div class="article-details">
+				<small>Created by: <%= article.user.username if article.user %>,
+							 Created at: <%= time_ago_in_words(article.created_at) %> ago
+							 Last updated at: <%= time_ago_in_words(article.updated_at) %> ago </small></div>
 			</div>
 		<div class="article-actions"> 
 		<%= link_to 'DELETE',article_path(article),method: :delete, data: {confirm: "You sure?"},
