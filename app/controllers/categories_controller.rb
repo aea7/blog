@@ -6,7 +6,7 @@ before_action :require_admin, except: [:index, :show]
   end
   
   def show
-    
+    @category = Category.find(params[:id])
   end
   
   def new

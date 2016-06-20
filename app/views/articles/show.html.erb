@@ -17,6 +17,13 @@
    <h4 class="center description"> <strong> Description </strong> </h4>
 <hr>  <%= simple_format(@article.description) %>
 
+<% if @article.categories.any? %>
+  <p>Categories: &nbsp;
+  <% @article.categories.each do |category| %>
+<span class="badge" style="background-color:#CEF6F5;text-transform:uppercase;
+letter-spacing:-1px;font-weight:bold"> <%=link_to category.name, category_path(category) %> &nbsp;  
+</span> <% end %> <% end %>
+</p>
 <% if logged_in? && (current_user.admin? || current_user == @article.user) %>
 <div class="article-actions"> 
 <%= link_to 'BACK',articles_path,class: "btn btn-xs btn-success" %> 
