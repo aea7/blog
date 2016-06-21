@@ -9,6 +9,22 @@ before_action :require_admin, except: [:index, :show]
     @category = Category.find(params[:id])
   end
   
+  def edit
+    @category = Category.find(params[:id])
+  end
+  
+  def update
+    @category = Category.find(params[:id])
+    if @category.update(category_params)
+      flash[:success] = "Name was updated"
+      redirect_to category_path(@category)
+    else
+      render 'edit'
+    end
+      
+  end
+  
+  
   def new
     @category = Category.new
   end
@@ -35,5 +51,4 @@ before_action :require_admin, except: [:index, :show]
   def category_params
     params.require(:category).permit(:name)
   end
-  
 end

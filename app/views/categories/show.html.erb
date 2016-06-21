@@ -1,5 +1,13 @@
-<h1 align="center">Articles of <%= "#{@category.name}" %></h1>
-
+<div class="center">
+<h1>Articles of <%= "#{@category.name}" %></h1>
+<% if logged_in? and current_user.admin? %>
+<span class="badge" style="background-color:#CEF6F5;text-transform:uppercase;
+letter-spacing:1.5px;font-weight:bold">
+	 <%=link_to "Edit", edit_category_path(@category) %>  
+</span>
+</br> </br>
+<%end%>
+</div>
 <% @category.articles.each do |article| if @category.articles.any? %>
 	<div class="col-xs-8 col-xs-offset-2">
 		<div class="well well-lg">
